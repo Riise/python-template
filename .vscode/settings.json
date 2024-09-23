@@ -17,4 +17,7 @@
         "**/__pycache__": true,
         "**/.pytest_cache": true
     },
+    "bandit.args": [
+        "-c bandit.yaml"
+    ],
 }
