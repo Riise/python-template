@@ -1,5 +1,6 @@
 [MAIN]
 ignore=**/tests/*.py
+load-plugins=pylint_secure_coding_standard
 
 [MESSAGES CONTROL]
 disable=
