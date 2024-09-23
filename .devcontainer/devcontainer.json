@@ -15,6 +15,8 @@
                 "ms-python.vscode-pylance",
                 "ms-python.debugpy",
                 "ms-toolsai.jupyter",
+                "ms-python.pylint",
+                "nwgh.bandit",
                 "ms-python.black-formatter",
                 "foxundermoon.shell-format",
                 "njpwerner.autodocstring",

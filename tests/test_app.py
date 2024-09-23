@@ -1,3 +1,5 @@
+"""Tests for the app module."""
+
 import pytest
 from src.app import get_message
 

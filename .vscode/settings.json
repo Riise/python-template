@@ -3,9 +3,7 @@
     "python.envFile": "${workspaceFolder}/.env",
     "python.analysis.typeCheckingMode": "basic",
     "python.analysis.diagnosticMode": "workspace",
-    "python.analysis.exclude": [
-        "lambda-layer"
-    ],
+    "python.analysis.exclude": [],
     "python.testing.pytestArgs": [
         "tests"
     ],
@@ -19,4 +17,11 @@
         "**/__pycache__": true,
         "**/.pytest_cache": true
     },
+    "pylint.ignorePatterns": [
+        "**/tests/*.py"
+    ],
+    "bandit.args": [
+        "-c ${workspaceFolder}/bandit.yaml"
+    ],
+    "todohighlight.isCaseSensitive": false,
 }
