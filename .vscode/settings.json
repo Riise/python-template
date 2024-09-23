@@ -3,9 +3,7 @@
     "python.envFile": "${workspaceFolder}/.env",
     "python.analysis.typeCheckingMode": "basic",
     "python.analysis.diagnosticMode": "workspace",
-    "python.analysis.exclude": [
-        "lambda-layer"
-    ],
+    "python.analysis.exclude": [],
     "python.testing.pytestArgs": [
         "tests"
     ],

@@ -6,12 +6,12 @@ from src.app import get_message
 
 def test_get_message_contains_hello():
     message = get_message().lower()
-    pytest.assume("hello" in message)
+    assert "hello" in message
 
 
 def test_get_message_contains_world():
     message = get_message().lower()
-    pytest.assume("world" in message)
+    assert "world" in message
 
 
 if __name__ == "__main__":
