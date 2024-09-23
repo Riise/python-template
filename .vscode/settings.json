@@ -23,4 +23,5 @@
     "bandit.args": [
         "-c ${workspaceFolder}/bandit.yaml"
     ],
+    "todohighlight.isCaseSensitive": false,
 }
