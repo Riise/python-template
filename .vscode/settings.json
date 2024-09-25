@@ -18,10 +18,15 @@
         "**/.pytest_cache": true
     },
     "pylint.ignorePatterns": [
-        "**/tests/*.py"
+        "**/tests/**"
     ],
     "bandit.args": [
         "-c ${workspaceFolder}/bandit.yaml"
     ],
     "todohighlight.isCaseSensitive": false,
+    "markdownlint.config": {
+        "no-duplicate-heading": {
+            "siblings_only": true
+        }
+    },
 }
