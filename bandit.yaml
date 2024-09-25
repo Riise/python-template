@@ -1,4 +1,4 @@
 # bandit.yaml
 exclude_dirs: ['tests']
 skips:
-  - S101
+  # - S101 # Use of assert detected
