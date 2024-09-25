@@ -73,6 +73,20 @@ First, install Chocolatey, a package manager for Windows.
     git --version
     ```
 
+### Step 4.1: Configure Git
+
+1. Set your username:
+
+    ```powershell
+    git config --global user.name "Your Name"
+    ```
+
+2. Set your email:
+
+    ```powershell
+    git config --global user.email "your.email@example.com"
+    ```
+
 ## Step 5: Install Visual Studio Code
 
 1. Install Visual Studio Code using Chocolatey:

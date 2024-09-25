@@ -10,6 +10,18 @@ The project contains the following elements:
 - Code formatter, type checker, and linter configuration.
 - Python security scanner configuration ([Bandit](https://github.com/PyCQA/bandit) and [Pylint Secure Coding Standard](https://github.com/Takishima/pylint-secure-coding-standard)).
 
+## Getting Started
+
+To get started with the project, follow these steps:
+
+1. Clone the repository.
+2. Open the repository in VS Code.
+3. Reopen the repository in the development container ([Windows](https://code.visualstudio.com/docs/devcontainers/containers#_open-a-wsl-2-folder-in-a-container-on-windows)).
+    - The development container is configured to use Python 3.10 from a base Python image.
+    - VS Code extensions defined in `.devcontainer/devcontainer.json` will be installed.
+    - `requirements-dev.txt` (incl. `requirements.txt`) project dependencies will be installed.
+4. Start coding!
+
 ## Project Structure
 
 The project structure is as follows:
@@ -30,15 +42,3 @@ The project structure is as follows:
 ├── requirements-ci.txt        # CI pip installs
 └── ...
 ```
-
-## Getting Started
-
-To get started with the project, follow these steps:
-
-1. Clone the repository.
-2. Open the repository in VS Code.
-3. Reopen the repository in the development container ([Windows](https://code.visualstudio.com/docs/devcontainers/containers#_open-a-wsl-2-folder-in-a-container-on-windows)).
-    - `requirements-dev.txt` (incl. `requirements.txt`) project dependencies will automatically be installed.
-4. Start coding!
-
-Add application/production dependencies to `requirements.txt` and development tool dependencies to `requirements-dev.txt`. If you need to install additional dependencies for CI, add them to `requirements-ci.txt`.
