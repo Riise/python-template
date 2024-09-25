@@ -1,66 +1,90 @@
-# Development Environment Setup on Windows
+# Development Environment Setup
 
-The tools installed are:
+This guide will help you set up your development environment on Windows installing the following tools:
 
-- Windows Subsystem for Linux v2 (WSL2)
+- Chocolatey
+- WSL2
 - Docker Desktop
-- VS Code
 - Git for Windows
+- VS Code
 
 ## Prerequisites
 
 - Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11.
+- Ensure you have PowerShell installed on your system. You can use the built-in PowerShell that comes with Windows.
 
-## Steps
+## Step 1: Install Chocolatey
 
-### 1. Install WSL2
+First, install Chocolatey, a package manager for Windows.
 
-1. Open PowerShell as Administrator.
-2. Enable the WSL feature:
+1. Open PowerShell as an Administrator.
+2. Run the following command to install Chocolatey:
+
+    ```powershell
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+    ```
+
+## Step 2: Install WSL2
+
+1. Enable the WSL feature:
 
     ```powershell
     wsl --install
     ```
 
-3. Set WSL2 as the default version:
+2. Set WSL2 as the default version:
 
     ```powershell
     wsl --set-default-version 2
     ```
 
-4. Install a Linux distribution from the Microsoft Store (e.g., Ubuntu).
+3. Install a Linux distribution (e.g., Ubuntu):
 
-### 2. Install Docker Desktop
+    ```powershell
+    wsl --install -d Ubuntu
+    ```
 
-1. Download Docker Desktop from [Docker's official website](https://www.docker.com/products/docker-desktop).
-2. Run the installer and follow the on-screen instructions.
-3. During installation, ensure the option "Use the WSL 2 based engine" is selected.
-4. After installation, start Docker Desktop and enable integration with your WSL2 distribution.
+## Step 3: Install Docker Desktop
 
-### 3. Install Visual Studio Code
+1. Install Docker Desktop using Chocolatey:
 
-1. Download VS Code from [Visual Studio Code's official website](https://code.visualstudio.com/).
-2. Run the installer and follow the on-screen instructions.
-3. Install the "Remote - WSL" extension for VS Code:
-    1. Open VS Code.
-    2. Go to the Extensions view by clicking the Extensions icon in the Activity Bar on the side of the window.
-    3. Search for "Remote - WSL" and install it.
+    ```powershell
+    choco install docker-desktop
+    ```
 
-### 4. Install Git for Windows
+2. After installation, start Docker Desktop from the Start menu.
 
-1. Download Git for Windows from [Git's official website](https://git-scm.com/).
-2. Run the installer and follow the on-screen instructions.
-3. During installation, ensure the option "Git from the command line and also from 3rd-party software" is selected.
+3. Ensure Docker is configured to use WSL2:
 
-### 5. Verify Installation
+    - Open Docker Desktop settings.
+    - Go to the "General" tab and check "Use the WSL 2 based engine".
 
-Open PowerShell and verify:
+## Step 4: Install Git for Windows
 
-```powershell
-wsl --list --verbose
-docker --version
-code --version
-git --version
-```
+1. Install Git for Windows using Chocolatey:
 
-You have now set up your development environment on Windows.
+    ```powershell
+    choco install git
+    ```
+
+2. Verify the installation:
+
+    ```powershell
+    git --version
+    ```
+
+## Step 5: Install Visual Studio Code
+
+1. Install Visual Studio Code using Chocolatey:
+
+    ```powershell
+    choco install vscode
+    ```
+
+2. Verify the installation by launching Visual Studio Code from the Start menu or by running:
+
+    ```powershell
+    code --version
+    ```
+
+You have now successfully set up your development environment on Windows using PowerShell and Chocolatey.
