@@ -101,3 +101,16 @@ To run pip-audit dependency vulnerability scanner:
 ```bash
 pip-audit -r requirements.txt
 ```
+
+## The use of FIXME and TODO
+
+The project uses the [TODO Highlight](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight) extension to highlight `TODO`, and `FIXME` comments and a CI check should be setup to fail if any FIXMEs are present in a `main` branch merge request.
+
+The convention is to use `FIXME` for tasks that need to be fixed before the PR can be approved and merged. See it as notes to yourself about incomplete code or security issues that need to be addressed.
+
+`TODO` is for tasks that need to be done sometime in the future. It can be used for improvements, refactoring, or other tasks that are not blocking the PR.
+
+Note! It should be a comment line starting with TODO or FIXME followed by a colon and a space.
+
+Example:
+<pre># FIXME&colon; Add input validation.</pre>
