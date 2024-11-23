@@ -11,6 +11,7 @@
         "wayou.vscode-todo-highlight",
         "hediet.vscode-drawio",
         "bierner.markdown-mermaid",
-        "DavidAnson.vscode-markdownlint"
+        "DavidAnson.vscode-markdownlint",
+        "github.copilot"
     ]
 }
