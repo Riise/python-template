@@ -1,5 +1,5 @@
 {
-    "name": "Python Template",
+    "name": "Python 3 Development",
     "image": "mcr.microsoft.com/devcontainers/python:3.12",
     // "mounts": [
     //     "source=${localEnv:HOME}/devdata,target=/devdata,type=bind,consistency=delegated"
@@ -23,8 +23,7 @@
                 "wayou.vscode-todo-highlight",
                 "hediet.vscode-drawio",
                 "bierner.markdown-mermaid",
-                "DavidAnson.vscode-markdownlint",
-                "GitHub.copilot"
+                "DavidAnson.vscode-markdownlint"
             ]
         },
         "settings": {
