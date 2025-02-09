@@ -11,3 +11,5 @@ The project contains the following elements:
 - Python security scanner configuration ([Bandit](https://github.com/PyCQA/bandit) and [Pylint Secure Coding Standard](https://github.com/Takishima/pylint-secure-coding-standard)).
 
 To get started see [Development Environment Setup](./docs/dev-env-setup.md) and [Development Guide](./docs/DEVELOPMENT.md).
+
+_Modify this README.md file to describe your project._
