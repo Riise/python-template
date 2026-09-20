@@ -1,8 +1,13 @@
 {
     "name": "Python 3 Development",
     "image": "mcr.microsoft.com/devcontainers/python:3.14",
+    // If a mounted data folder is needed, uncomment the following lines.
     // "mounts": [
     //     "source=${localEnv:HOME}/devdata,target=/devdata,type=bind,consistency=delegated"
+    // ],
+    // If Claude Code's login session/settings/memory should survive a container rebuild, uncomment the following lines.
+    // "mounts": [
+    //     "source=claude-code-config,target=/home/vscode/.claude,type=volume"
     // ],
     "features": {
         "python": "3.14"
