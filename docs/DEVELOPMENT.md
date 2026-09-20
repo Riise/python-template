@@ -71,7 +71,7 @@ This project uses [uv](https://docs.astral.sh/uv/) for Python packaging and depe
 
 ## Linting, Code Security Scanning, and Dependency Vulnerability Scanning
 
-The project uses [Bandit](https://github.com/PyCQA/bandit) and [Pylint Secure Coding Standard](https://github.com/Takishima/pylint-secure-coding-standard) to scan for security vulnerabilities and code quality issues.
+The project uses [Bandit](https://github.com/PyCQA/bandit) and [Pylint Secure Coding Standard](https://github.com/Takishima/pylint-secure-coding-standard) to scan for security vulnerabilities and code quality issues. Bandit is a dedicated, comprehensive security scanner, while Pylint Secure Coding Standard is a lightweight plugin that surfaces a small subset of the same concerns directly in the linter, giving faster in-editor feedback.
 
 Both tools have VS Code extensions installed for real-time scanning, but they can also be run from the command line.
 
