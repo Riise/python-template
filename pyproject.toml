@@ -1,0 +1,22 @@
+[project]
+name = "python-template"
+version = "0.1.0"
+description = "A template for a Python project."
+requires-python = ">=3.14"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.3",
+    "pytest-dotenv>=0.5.2",
+    "bandit>=1.7.10",
+    "pylint>=3.3.1",
+    "pylint-secure-coding-standard>=1.5.1",
+    "pip-audit>=2.7.3",
+]
+ci = [
+    {include-group = "dev"},
+]
+
+[tool.uv]
+package = false
