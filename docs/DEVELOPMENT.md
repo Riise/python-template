@@ -67,13 +67,12 @@ The project uses [Bandit](https://github.com/PyCQA/bandit) and [Pylint Secure Co
 
 Both tools have VS Code extensions installed for real-time scanning, but they can also be run from the command line.
 
-The project uses [Safety](https://safetycli.com/) to scan for Python dependencies with known security vulnerabilities. Alternatively [pip-audit](https://pypi.org/project/pip-audit/) can be used as Safety has a commercial version.
+The project uses [pip-audit](https://pypi.org/project/pip-audit/) to scan for Python dependencies with known security vulnerabilities. It is fully open source and requires no account or commercial license.
 
 The configuration files are located in the root of the project:
 
 - [`.pylintrc`](../.pylintrc): Pylint configuration.
 - [`bandit.yml`](../bandit.yml): Bandit configuration.
-- [`.safety-policy.yml`](../.safety-policy.yml): Safety configuration.
 
 ### Running Linters and Scanners from the Command Line
 
@@ -88,12 +87,6 @@ To run Bandit security scanner:
 ```bash
 bandit -r src               # only source code folder
 bandit -c bandit.yml -r .   # entire project and using a Bandit config file
-```
-
-To run Safety dependency vulnerability scanner:
-
-```bash
-safety check
 ```
 
 To run pip-audit dependency vulnerability scanner:

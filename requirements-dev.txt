@@ -6,5 +6,4 @@ pylint==3.3.1
 pylint-secure-coding-standard==1.5.1
 
 # Could be removed in dev and only invoked in a CI pipeline
-safety==3.2.7
 pip_audit==2.7.3
