@@ -5,7 +5,7 @@ This document provides a reference for development practices and tools used in t
 ## Assumption & Pre-requisites
 
 - The project is developed using Visual Studio Code and the development container.
-- The development container is configured to use Python 3.12.
+- The development container is configured to use Python 3.14.
 - Windows was used as the development environment, but development can happen on other operating systems.
 - Linux was used as the development container.
 - Production environment is assumed to be Linux-based.
@@ -34,9 +34,9 @@ To get started with the project, follow these steps:
 
 The project uses a development container to ensure a consistent development environment across all developers. The development container is defined in `.devcontainer/devcontainer.json` and uses the following configuration:
 
-- It is from a Python 3.12 base image.
+- It is from a Python 3.14 base image.
 - Recommended VS Code extensions will be installed.
-- `requirements-dev.txt` (incl. `requirements.txt`) project dependencies will be installed.
+- [uv](https://docs.astral.sh/uv/) will be installed and the project's `dev` dependency group will be synced into a `.venv` via `uv sync --group dev`.
 
 ## Project Structure
 
@@ -51,55 +51,56 @@ The project structure is as follows:
 ├── src/                       # Source code
 ├── tests/                     # Unit tests
 ├── docs/                      # Main documentation
-├── requirements.txt           # Base pip installs (production only uses this)
-├── requirements-dev.txt       # Development pip installs
-├── requirements-ci.txt        # CI pip installs
+├── pyproject.toml             # Project metadata and dependency declarations (PEP 735 groups)
+├── uv.lock                    # Locked, exact dependency versions (committed, do not edit by hand)
+├── .python-version            # Pinned Python version for uv
 └── ...
 ```
 
 ## Python Dependency Management
 
-Add application/production dependencies to `requirements.txt` and development tool dependencies to `requirements-dev.txt`. If you need to install additional dependencies for CI, add them to `requirements-ci.txt`.
+This project uses [uv](https://docs.astral.sh/uv/) for Python packaging and dependency management. Dependencies are declared in `pyproject.toml` and pinned to exact resolved versions in `uv.lock` (which is committed to version control for reproducibility).
+
+- Add an application/production dependency: `uv add <package>`
+- Add a development tool dependency (linters, test tools, etc.): `uv add --group dev <package>`
+- Add a dependency needed only in CI: `uv add --group ci <package>` — the `ci` group starts as an extension of `dev` (`{include-group = "dev"}` in `pyproject.toml`), so it only needs entries once it needs to diverge from `dev`.
+- Install/refresh your local environment: `uv sync --group dev`
+- Install the environment the way CI will: `uv sync --group ci`
+- Run a command inside the managed environment without activating it: `uv run <command>` (e.g. `uv run pytest`)
+- Upgrade dependencies within their declared version bounds and update the lockfile: `uv lock --upgrade`
 
 ## Linting, Code Security Scanning, and Dependency Vulnerability Scanning
 
-The project uses [Bandit](https://github.com/PyCQA/bandit) and [Pylint Secure Coding Standard](https://github.com/Takishima/pylint-secure-coding-standard) to scan for security vulnerabilities and code quality issues.
+The project uses [Bandit](https://github.com/PyCQA/bandit) and [Pylint Secure Coding Standard](https://github.com/Takishima/pylint-secure-coding-standard) to scan for security vulnerabilities and code quality issues. Bandit is a dedicated, comprehensive security scanner, while Pylint Secure Coding Standard is a lightweight plugin that surfaces a small subset of the same concerns directly in the linter, giving faster in-editor feedback.
 
 Both tools have VS Code extensions installed for real-time scanning, but they can also be run from the command line.
 
-The project uses [Safety](https://safetycli.com/) to scan for Python dependencies with known security vulnerabilities. Alternatively [pip-audit](https://pypi.org/project/pip-audit/) can be used as Safety has a commercial version.
+The project uses [pip-audit](https://pypi.org/project/pip-audit/) to scan for Python dependencies with known security vulnerabilities. It is fully open source and requires no account or commercial license.
 
 The configuration files are located in the root of the project:
 
 - [`.pylintrc`](../.pylintrc): Pylint configuration.
 - [`bandit.yml`](../bandit.yml): Bandit configuration.
-- [`.safety-policy.yml`](../.safety-policy.yml): Safety configuration.
 
 ### Running Linters and Scanners from the Command Line
 
 To run Pylint with Secure Coding Standard:
 
 ```bash
-pylint src
+uv run pylint src
 ```
 
 To run Bandit security scanner:
 
 ```bash
-bandit -r src               # only source code folder
-bandit -c bandit.yml -r .   # entire project and using a Bandit config file
-```
-
-To run Safety dependency vulnerability scanner:
-
-```bash
-safety check
+uv run bandit -r src               # only source code folder
+uv run bandit -c bandit.yml -r .   # entire project and using a Bandit config file
 ```
 
 To run pip-audit dependency vulnerability scanner:
 
 ```bash
-pip-audit -r requirements.txt
+uv run pip-audit
 ```
 
 ## The use of FIXME and TODO
